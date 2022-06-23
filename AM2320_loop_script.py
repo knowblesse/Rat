@@ -75,7 +75,7 @@ while True:
         except:
             continue
 
-    time.sleep(30)
     generateJSFile(Path('/home/pi/VCF/Rat'), arr_temp, arr_humd)
-    generateIndexFile(Path('/home/pi/VCF/Rat'), f'Last updated : {time.ctime()}')
+    generateIndexFile(Path('/home/pi/VCF/Rat'), f'Last updated : {time.ctime()}<br> Temp : {arr_temp[-1]}Deg Humd : {arr_humd[-1]}%')
+    time.sleep(30)
 	
