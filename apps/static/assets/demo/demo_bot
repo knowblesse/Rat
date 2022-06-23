@@ -1,4 +1,4 @@
-    var ctx = document.getElementById("chartBig1").getContext('2d');
+var ctx = document.getElementById("chartBig1").getContext('2d');
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
 
@@ -24,7 +24,7 @@
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: chart_data,
+          data: temp_chart_data,
         }]
       },
       options: gradientChartOptionsConfigurationWithTooltipPurple
@@ -32,21 +32,21 @@
     var myChartData = new Chart(ctx, config);
     $("#0").click(function() {
       var data = myChartData.config.data;
-      var options = myChartData.config.options
+      var options = myChartData.config.options;
       data.datasets[0].label = "Temp";
       data.datasets[0].data = temp_chart_data;
-      options.scales.yAxes[0].ticks.suggestedMin = 15;
-      options.scales.yAxes[0].ticks.suggestedMax = 30;
+      options.scales.yAxes[0].ticks.suggestedMin = 20;
+      options.scales.yAxes[0].ticks.suggestedMax = 27;
       data.labels = chart_labels;
       myChartData.update();
     });
     $("#1").click(function() {
       var data = myChartData.config.data;
-      var options = myChartData.config.options
+      var options = myChartData.config.options;
       data.datasets[0].label = "Humd";
       data.datasets[0].data = humd_chart_data;
-      options.scales.yAxes[0].ticks.suggestedMin = 0;
-      options.scales.yAxes[0].ticks.suggestedMax = 100;
+      options.scales.yAxes[0].ticks.suggestedMin = 30;
+      options.scales.yAxes[0].ticks.suggestedMax = 70;
       data.labels = chart_labels;
       myChartData.update();
     });

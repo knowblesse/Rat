@@ -14,98 +14,6 @@ demo = {
       }
     });
   },
-
-  initDocChart: function() {
-    chartColor = "#FFFFFF";
-
-    // General configuration for the charts with Line gradientStroke
-    gradientChartOptionsConfiguration = {
-      maintainAspectRatio: false,
-      legend: {
-        display: false
-      },
-      tooltips: {
-        bodySpacing: 4,
-        mode: "nearest",
-        intersect: 0,
-        position: "nearest",
-        xPadding: 10,
-        yPadding: 10,
-        caretPadding: 10
-      },
-      responsive: true,
-      scales: {
-        yAxes: [{
-          display: 0,
-          gridLines: 0,
-          ticks: {
-            display: false
-          },
-          gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
-          }
-        }],
-        xAxes: [{
-          display: 0,
-          gridLines: 0,
-          ticks: {
-            display: false
-          },
-          gridLines: {
-            zeroLineColor: "transparent",
-            drawTicks: false,
-            display: false,
-            drawBorder: false
-          }
-        }]
-      },
-      layout: {
-        padding: {
-          left: 0,
-          right: 0,
-          top: 15,
-          bottom: 15
-        }
-      }
-    };
-
-    ctx = document.getElementById('lineChartExample').getContext("2d");
-
-    gradientStroke = ctx.createLinearGradient(500, 0, 100, 0);
-    gradientStroke.addColorStop(0, '#80b6f4');
-    gradientStroke.addColorStop(1, chartColor);
-
-    gradientFill = ctx.createLinearGradient(0, 170, 0, 50);
-    gradientFill.addColorStop(0, "rgba(128, 182, 244, 0)");
-    gradientFill.addColorStop(1, "rgba(249, 99, 59, 0.40)");
-
-    myChart = new Chart(ctx, {
-      type: 'line',
-      responsive: true,
-      data: {
-          labels: ["-8:00", "-7:30", "-7:00", "-6:30", "-6:00", "-5:30", "-5:00", "-4:30", "-4:00", "-3:30", "-3:00", "-2:30", "-2:00", "-1:30", "-1:00", "-0:30", "Current"],
-        datasets: [{
-          label: "Active Users",
-          borderColor: "#f96332",
-          pointBorderColor: "#FFF",
-          pointBackgroundColor: "#f96332",
-          pointBorderWidth: 2,
-          pointHoverRadius: 4,
-          pointHoverBorderWidth: 1,
-          pointRadius: 4,
-          fill: true,
-          backgroundColor: gradientFill,
-          borderWidth: 2,
-          data: [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25];
-        }]
-      },
-      options: gradientChartOptionsConfiguration
-    });
-  },
-
   initDashboardPageCharts: function() {
 
     gradientChartOptionsConfigurationWithTooltipBlue = {
@@ -182,8 +90,8 @@ demo = {
             zeroLineColor: "transparent",
           },
           ticks: {
-            suggestedMin: 60,
-            suggestedMax: 125,
+            suggestedMin: 20,
+            suggestedMax: 27,
             padding: 20,
             fontColor: "#9a9a9a"
           }
@@ -204,10 +112,10 @@ demo = {
       }
     };
 
-
-    var chart_labels = ["-8:00", "-7:30", "-7:00", "-6:30", "-6:00", "-5:30", "-5:00", "-4:30", "-4:00", "-3:30", "-3:00", "-2:30", "-2:00", "-1:30", "-1:00", "-0:30", "Current"],
+    var chart_labels = ["-8:00", "-7:30", "-7:00", "-6:30", "-6:00", "-5:30", "-5:00", "-4:30", "-4:00", "-3:30", "-3:00", "-2:30", "-2:00", "-1:30", "-1:00", "-0:30", "Current"];
     var temp_chart_data = [25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25, 25];
     var humd_chart_data = [50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50];
+
     var ctx = document.getElementById("chartBig1").getContext('2d');
 
     var gradientStroke = ctx.createLinearGradient(0, 230, 0, 50);
@@ -234,7 +142,7 @@ demo = {
           pointHoverRadius: 4,
           pointHoverBorderWidth: 15,
           pointRadius: 4,
-          data: chart_data,
+          data: temp_chart_data,
         }]
       },
       options: gradientChartOptionsConfigurationWithTooltipPurple
@@ -242,21 +150,21 @@ demo = {
     var myChartData = new Chart(ctx, config);
     $("#0").click(function() {
       var data = myChartData.config.data;
-      var options = myChartData.config.options
+      var options = myChartData.config.options;
       data.datasets[0].label = "Temp";
       data.datasets[0].data = temp_chart_data;
-      options.scales.yAxes[0].ticks.suggestedMin = 15;
-      options.scales.yAxes[0].ticks.suggestedMax = 30;
+      options.scales.yAxes[0].ticks.suggestedMin = 20;
+      options.scales.yAxes[0].ticks.suggestedMax = 27;
       data.labels = chart_labels;
       myChartData.update();
     });
     $("#1").click(function() {
       var data = myChartData.config.data;
-      var options = myChartData.config.options
+      var options = myChartData.config.options;
       data.datasets[0].label = "Humd";
       data.datasets[0].data = humd_chart_data;
-      options.scales.yAxes[0].ticks.suggestedMin = 0;
-      options.scales.yAxes[0].ticks.suggestedMax = 100;
+      options.scales.yAxes[0].ticks.suggestedMin = 30;
+      options.scales.yAxes[0].ticks.suggestedMax = 70;
       data.labels = chart_labels;
       myChartData.update();
     });

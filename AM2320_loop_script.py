@@ -24,7 +24,7 @@ def generateJSFile(base_path, temp_array, humd_array):
         fw.write(f'var humd_chart_data = {str(humd_array.tolist())};\n')
 
         fw.write('\n')
-        with open(str((jspath/'demo_dot').absolute()), 'r') as f2:
+        with open(str((jspath/'demo_bot').absolute()), 'r') as f2:
             while True:
                 line = f2.readline()
                 if not line:
@@ -53,5 +53,5 @@ while True:
             continue
 
     time.sleep(30)
-    generateJSFile(Path('.'), arr_temp, arr_humd)
+    generateJSFile(Path('/home/pi/VCF/Rat'), arr_temp, arr_humd)
 	
