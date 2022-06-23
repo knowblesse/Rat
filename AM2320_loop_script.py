@@ -32,6 +32,28 @@ def generateJSFile(base_path, temp_array, humd_array):
                 fw.write(line)
     os.rename(str((jspath/'demo_temp.js').absolute()), str((jspath/'demo.js').absolute()))
 
+def generateIndexFile(base_path, msg):
+    htmlpath = base_path / "apps/templates/home"
+    with open(str((htmlpath/'index_temp').absolute()), 'w') as fw:
+        with open(str((htmlpath/'index_top').absolute()), 'r') as f1:
+            while True:
+                line = f1.readline()
+                if not line:
+                    break
+                fw.write(line)
+        fw.write('\n')
+
+        fw.write(f'<h4> {msg}</h4>\n')
+
+        fw.write('\n')
+        with open(str((htmlpath/'index_bot').absolute()), 'r') as f2:
+            while True:
+                line = f2.readline()
+                if not line:
+                    break
+                fw.write(line)
+    os.rename(str((htmlpath/'index_temp').absolute()), str((htmlpath/'index.html').absolute()))
+
 
 i2c = board.I2C()
 sensor = adafruit_am2320.AM2320(i2c)
@@ -48,10 +70,12 @@ while True:
             arr_temp = np.append(arr_temp, temp)
             arr_humd = np.delete(arr_humd, 0)
             arr_humd = np.append(arr_humd, humd)
+            print(f'{time.ctime()} : temp : {temp} humd : {humd}')
             break
         except:
             continue
 
     time.sleep(30)
     generateJSFile(Path('/home/pi/VCF/Rat'), arr_temp, arr_humd)
+    generateIndexFile(Path('/home/pi/VCF/Rat'), f'Last updated : {time.ctime()}')
 	
