@@ -22,14 +22,14 @@
                     <input type="radio" name="options" checked>
                     <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Temperature</span>
                     <span class="d-block d-sm-none">
-                      <i class="tim-icons icon-single-02"></i>
+                      Temp
                     </span>
                   </label>
                   <label class="btn btn-sm btn-primary btn-simple" id="1">
                     <input type="radio" class="d-none d-sm-none" name="options">
                     <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Humidity</span>
                     <span class="d-block d-sm-none">
-                      <i class="tim-icons icon-gift-2"></i>
+                      Humd
                     </span>
                   </label>
                 </div>
